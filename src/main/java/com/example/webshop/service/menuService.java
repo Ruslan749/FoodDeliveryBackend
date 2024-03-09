@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.example.webshop.Model.Catalog;
 import java.util.List;
 import java.util.Optional;
 
@@ -22,8 +23,9 @@ public class menuService {
         this.menuRepository = menuRepository;
     }
 
-    public List<Menu> findAll() {
-        return menuRepository.findAll();
+    public Catalog findAll() {
+        var result = menuRepository.findAll();
+        return new Catalog(menuRepository.findAll());
     }
 
     public Menu findOne(int id) {
